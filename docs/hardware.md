@@ -23,7 +23,7 @@ See `hardware/bom/` for a full bill of materials with UK suppliers and current p
 
 ### Why a matrix of antennas?
 
-Standard NFC readers have a single antenna with a read range of ~4 cm. To cover all 64 squares without moving parts, michess uses 64 small loop antennas — one per square — switched via multiplexers so that a single PN532 module scans 8 squares in sequence.
+Standard NFC readers have a single antenna with a read range of ~4 cm. To cover all 64 squares without moving parts, michess uses 64 small loop antennas - one per square - switched via multiplexers so that a single PN532 module scans 8 squares in sequence.
 
 ### Multiplexer topology
 
@@ -52,21 +52,21 @@ The loop antennas are custom-designed PCB coils tuned to 13.56 MHz. Each coil si
 
 WS2812B addressable LEDs are placed beneath each square. The Raspberry Pi drives the LED strip directly over a single GPIO pin using the `rpi_ws281x` library. The LEDs indicate:
 
-- **Engine move** — highlight the from-square and to-square
-- **Check** — flash the king's square
-- **Illegal move** — brief red flash on the lifted piece's origin square
+- **Engine move** - highlight the from-square and to-square
+- **Check** - flash the king's square
+- **Illegal move** - brief red flash on the lifted piece's origin square
 
 ---
 
 ## PCB Design
 
-The project uses KiCad for PCB design. Source files are in `hardware/pcb/`. Gerber files are not committed — regenerate them from source when needed.
+The project uses KiCad for PCB design. Source files are in `hardware/pcb/`. Gerber files are not committed - regenerate them from source when needed.
 
 ---
 
 ## Enclosure
 
-The enclosure is designed in FreeCAD (source in `hardware/enclosure/`). The top surface is a wood veneer panel with LEDs diffused through it. STL files are not committed — export from the FreeCAD source.
+The enclosure is designed in FreeCAD (source in `hardware/enclosure/`). The top surface is a wood veneer panel with LEDs diffused through it. STL files are not committed - export from the FreeCAD source.
 
 ---
 
