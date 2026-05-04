@@ -1,0 +1,10 @@
+flowchart TB
+    NFC["NFC Matrix System\n(64 squares)"] --> Controller
+    subgraph Controller["Board Controller (Python)"]
+        Reader["Board State Reader"] --> State["Board State Manager"]
+        State <--> Engine["Chess Engine Interface (UCI)"]
+        State --> Display["LED Display Controller"]
+    end
+    Controller <--> ChessEngine["Chess Engine\n(Stockfish/GNU Chess)"]
+    Controller --> LED["LED Matrix\n(Move Indicators)"]
+    User["User Interface\n(Buttons/Display)"] <--> Controller

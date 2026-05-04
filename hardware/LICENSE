@@ -1,0 +1,20 @@
+CERN Open Hardware Licence Version 2 - Strongly Reciprocal (CERN-OHL-S v2)
+
+michess - NFC-based Smart Chess Board Hardware Designs
+Copyright (C) 2026
+
+These hardware design files are licensed under the CERN-OHL-S v2.
+
+You may redistribute and modify this documentation and make products
+using it under the terms of the CERN-OHL-S v2 (https://ohwr.org/cern_ohl_s_v2.txt).
+
+This documentation is distributed WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY
+AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN-OHL-S v2
+for applicable conditions.
+
+As per CERN-OHL-S v2 section 4, should you produce hardware based
+on these designs, you must make the modified Source available on the
+same terms.
+
+SPDX-License-Identifier: CERN-OHL-S-2.0
