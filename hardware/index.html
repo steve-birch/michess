@@ -802,7 +802,7 @@
 <hr />
 <h2 id="nfc-matrix-architecture">NFC Matrix Architecture</h2>
 <h3 id="why-a-matrix-of-antennas">Why a matrix of antennas?</h3>
-<p>Standard NFC readers have a single antenna with a read range of ~4 cm. To cover all 64 squares without moving parts, michess uses 64 small loop antennas — one per square — switched via multiplexers so that a single PN532 module scans 8 squares in sequence.</p>
+<p>Standard NFC readers have a single antenna with a read range of ~4 cm. To cover all 64 squares without moving parts, michess uses 64 small loop antennas - one per square - switched via multiplexers so that a single PN532 module scans 8 squares in sequence.</p>
 <h3 id="multiplexer-topology">Multiplexer topology</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Raspberry Pi (I²C / SPI)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    │
@@ -822,16 +822,16 @@
 <h2 id="led-system">LED System</h2>
 <p>WS2812B addressable LEDs are placed beneath each square. The Raspberry Pi drives the LED strip directly over a single GPIO pin using the <code>rpi_ws281x</code> library. The LEDs indicate:</p>
 <ul>
-<li><strong>Engine move</strong> — highlight the from-square and to-square</li>
-<li><strong>Check</strong> — flash the king's square</li>
-<li><strong>Illegal move</strong> — brief red flash on the lifted piece's origin square</li>
+<li><strong>Engine move</strong> - highlight the from-square and to-square</li>
+<li><strong>Check</strong> - flash the king's square</li>
+<li><strong>Illegal move</strong> - brief red flash on the lifted piece's origin square</li>
 </ul>
 <hr />
 <h2 id="pcb-design">PCB Design</h2>
-<p>The project uses KiCad for PCB design. Source files are in <code>hardware/pcb/</code>. Gerber files are not committed — regenerate them from source when needed.</p>
+<p>The project uses KiCad for PCB design. Source files are in <code>hardware/pcb/</code>. Gerber files are not committed - regenerate them from source when needed.</p>
 <hr />
 <h2 id="enclosure">Enclosure</h2>
-<p>The enclosure is designed in FreeCAD (source in <code>hardware/enclosure/</code>). The top surface is a wood veneer panel with LEDs diffused through it. STL files are not committed — export from the FreeCAD source.</p>
+<p>The enclosure is designed in FreeCAD (source in <code>hardware/enclosure/</code>). The top surface is a wood veneer panel with LEDs diffused through it. STL files are not committed - export from the FreeCAD source.</p>
 <hr />
 <h2 id="licences">Licences</h2>
 <p>All hardware designs are released under <a href="https://ohwr.org/cern_ohl_s_v2.txt">CERN-OHL-S v2</a>. You are free to manufacture, modify, and sell boards based on this design, but must share modifications under the same licence.</p>
