@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://steve-birch.github.io/michess/</loc>
+         <loc>https://docs.michess.dev/</loc>
          <lastmod>2026-07-18</lastmod>
     </url>
     <url>
-         <loc>https://steve-birch.github.io/michess/getting-started/</loc>
+         <loc>https://docs.michess.dev/getting-started/</loc>
          <lastmod>2026-07-18</lastmod>
     </url>
     <url>
-         <loc>https://steve-birch.github.io/michess/hardware/</loc>
+         <loc>https://docs.michess.dev/hardware/</loc>
          <lastmod>2026-07-18</lastmod>
     </url>
     <url>
-         <loc>https://steve-birch.github.io/michess/software/</loc>
+         <loc>https://docs.michess.dev/software/</loc>
          <lastmod>2026-07-18</lastmod>
     </url>
 </urlset>
