@@ -1,0 +1,71 @@
+# Getting Started
+
+This guide covers cloning the repo, setting up the software environment on a Raspberry Pi, and running the board reader for the first time.
+
+---
+
+## Prerequisites
+
+- Raspberry Pi 4 (2 GB RAM or more recommended)
+- Raspberry Pi OS (Bookworm or later)
+- Python 3.11+
+- [uv](https://docs.astral.sh/uv/)
+- Git
+
+---
+
+## Software Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/steve-birch/michess.git
+cd michess
+```
+
+### 2. Run the current prototype
+
+The `software/` package (`board_reader`, `chess_engine`, `led_controller`) isn't implemented yet - see [Project Status](index.md#project-status). Each harness under `development/` is an independent [uv](https://docs.astral.sh/uv/) project with its own `pyproject.toml`, virtual environment, and lockfile, so there's no repo-wide install step.
+
+To run the NFC reader prototype:
+
+```bash
+cd development/nfc-matrix-tester
+uv run nfc-matrix-tester
+```
+
+`uv run` creates the virtual environment and installs dependencies automatically on first use.
+
+---
+
+## Hardware Setup
+
+Before running the software you'll need the physical board assembled and wired. See the [Hardware](hardware.md) page for:
+
+- Component list and sourcing
+- Multiplexer topology
+- PCB and antenna assembly
+
+---
+
+## Repository Layout
+
+```
+michess/
+├── hardware/               # Schematics, PCB layouts, BOM, antenna designs
+├── firmware/                # Low-level microcontroller code (if applicable)
+├── software/
+│   ├── board_reader/       # NFC matrix scanning
+│   ├── chess_engine/       # Stockfish/UCI integration
+│   └── led_controller/     # LED matrix control
+├── development/            # Throwaway hardware/learning test harnesses
+├── docs/
+└── tests/
+```
+
+---
+
+## Next Steps
+
+- Read the [Hardware](hardware.md) page to understand the physical build
+- Read the [Software](software.md) page for architecture details and how to contribute code
