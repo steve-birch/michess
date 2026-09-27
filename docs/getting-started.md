@@ -10,6 +10,7 @@ This guide covers cloning the repo, setting up the software environment on a Ras
 - Raspberry Pi OS (Bookworm or later)
 - Python 3.11+
 - Git
+- [uv](https://docs.astral.sh/uv/) (optional; see Development section)
 
 ---
 
@@ -22,24 +23,27 @@ git clone https://github.com/steve-birch/michess.git
 cd michess
 ```
 
-### 2. Create a virtual environment
+### 2. Repository-wide or per-harness workflow
+
+The repository contains multiple independent harnesses under `development/`. Each harness is a self-contained Python project with its own `pyproject.toml`, virtual environment, and lockfile. You can either use a single global virtual environment and install needed dependencies, or run each harness in-place using `uv` which will create and manage per-harness virtual environments automatically.
+
+To run the main board reader (if available) via a repo-wide virtual environment:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
-
-### 4. Run the board reader
-
-```bash
 python software/main.py
 ```
+
+To run a development harness using `uv` (recommended for prototypes):
+
+```bash
+cd development/nfc-matrix-tester
+uv run nfc-matrix-tester
+```
+
+`uv run` will create the virtual environment and install dependencies automatically on first use.
 
 ---
 
@@ -48,18 +52,14 @@ python software/main.py
 Before running the software you'll need the physical board assembled and wired. See the [Hardware](hardware.md) page for:
 
 - Component list and sourcing
-- Wiring diagram
+- Wiring diagram / multiplexer topology
 - PCB and antenna assembly
 
 ---
 
 ## Development Setup
 
-If you want to work on the codebase without physical hardware, the board reader supports a simulated mode:
-
-```bash
-python software/main.py --simulate
-```
+If you want to work on the codebase without physical hardware, the board reader supports a simulated mode when running the harness that provides it (see the specific harness README under `development/`). For example, some harnesses accept a `--simulate` flag to emulate hardware.
 
 This lets you develop the chess engine integration and LED controller logic without a connected board.
 
@@ -75,9 +75,8 @@ michess/
 │   ├── board_reader/       # NFC matrix scanning
 │   ├── chess_engine/       # Stockfish/UCI integration
 │   └── led_controller/     # LED matrix control
-├── development/            # Throwaway hardware/learning test harnesses
+├── development/            # Throwaway hardware/learning test harnesses (each a self-contained project)
 ├── docs/
-│   └── architecture/       # System diagrams and design notes
 └── tests/
 ```
 
@@ -87,3 +86,4 @@ michess/
 
 - Read the [Hardware](hardware.md) page to understand the physical build
 - Read the [Software](software.md) page for architecture details and how to contribute code
+- For prototype development, see the README inside each harness under `development/` (for example `development/nfc-matrix-tester/README.md`) for run instructions and available simulate flags
