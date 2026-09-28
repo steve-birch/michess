@@ -65,3 +65,6 @@ site/
 config.local.py
 secrets.py
 .env.local
+
+# -- Other
+vendor/
