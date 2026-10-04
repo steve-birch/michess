@@ -4,20 +4,22 @@ This folder contains a single printed 57 mm chess-square tile for a prototype re
 
 ## Key dimensions
 
-These values come from the FreeCAD spreadsheet in `coil-drum.FCStd` rather than being guessed. Some values are still typed in instead of being linked to the spreadsheet; that tidy-up is still pending.
+These values come from the FreeCAD spreadsheet in `coil-drum.FCStd`. Some values are still typed in instead of being linked to the spreadsheet; that tidy-up is still pending, including the unused aliases.
 
-| Parameter | Value | Notes |
-|---|---:|---|
-| Chess-square tile size | 57 mm | Printed square tile size |
-| Drum core diameter | 31.5 mm | Spreadsheet value `core_d` |
-| Drum height | 3 mm | Spreadsheet value `drum_h` |
-| Top-flange thickness | 1 mm | Spreadsheet value `flange_t` |
-| LED ring hole ID | 35 mm | Spreadsheet value `LED_ring_hole` |
-| LED ring OD | ~50 mm | Rough design target from the ring specification; not a measured part value |
-| LED peg spacing | 32.5 mm | Spreadsheet value `LED_loc_peg_dist` |
-| LED hole diameter | 2.2 mm | Spreadsheet value `LED_loc_hole_dia` |
-| LED peg diameter | 1.0 mm | Derived from `LED_loc_hole_dia - clearance`, with `clearance = 1 mm` |
-| LED peg height | 3 mm | Spreadsheet value `LED_loc_peg_h` |
+| Parameter | Value | Source | Notes |
+|---|---:|---|---|
+| Chess-square tile size | 57 mm | Spreadsheet value `square_size` | Printed square tile size |
+| Base plate thickness | 3.6 mm | Typed in | Draft 2 geometry |
+| Drum overall height | 6.0 mm | Typed in | Winding gap is 2.4 mm |
+| Top flange thickness | 0.6 mm | Typed in | Draft 2 geometry |
+| LED ring hole ID | 35 mm | Measured | Measured 2 Oct 2026 |
+| LED ring OD | 50 mm | Measured | Measured 2 Oct 2026 |
+| LED peg spacing | 32.5 mm | Spreadsheet value `LED_loc_peg_dist` | Locates the LED ring |
+| LED hole diameter | 2.2 mm | Spreadsheet value `LED_loc_hole_dia` | Hole size |
+| LED peg diameter | 1.2 mm | Typed in | Derived from `2.2 mm - 1.0 mm` clearance |
+| LED peg height | 5 mm | Typed in | Draft 2 geometry |
+| Anchor-board pocket height | 1.6 mm | Typed in | Draft 2 geometry |
+| Anchor-board pocket floor | 0.6 mm | Typed in | Draft 2 geometry |
 
 ## Files
 
@@ -29,7 +31,7 @@ These values come from the FreeCAD spreadsheet in `coil-drum.FCStd` rather than 
 - Printer: Bambu Lab A1
 - Orientation: flat on its base
 - Supports: none
-- Ask me for the layer height and material rather than guessing.
+- Layer height / material: TBD
 
 ## History
 

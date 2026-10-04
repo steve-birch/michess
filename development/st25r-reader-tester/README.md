@@ -6,7 +6,7 @@ Bring-up harness for the Elechouse **ST25R3916B MINI** reader on a Raspberry Pi.
 
 - Check you're on the right branch: `git branch --show-current` should print `feature/1-prototype-reading-a-single-nfc-tag`.
 - In `development/st25r-reader-tester`, run `uv run id_check.py`. Expect `ID=0x31 type=6`.
-- From `vendor/ST25R3916_v2.8.0_Linux_demo_v1.0/linux_demo/build`, run `sudo ./demo/nfc_demo_st25r3916b` to keep the stock antenna active. Press `Ctrl+C` to stop it; stop it before swapping antennas.
+- From `vendor/ST25R3916_v2.8.0_Linux_demo_v1.0/linux_demo/build`, run `sudo ./demo/nfc_demo_st25r3916b`; this runs the reader demo, which reads tags with whichever antenna is plugged in. Press `Ctrl+C` to stop it; stop it before swapping antennas.
 - `vendor/` is git-ignored, so after a fresh clone you need the unpack, edit and build steps later in this document before the demo will run.
 
 ## Status (28 Sep 2026)
@@ -121,11 +121,6 @@ Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with N
 
 ## AAT status
 
-Elechouse confirmed in early Oct 2026 that the MINI does not have varicaps. The AAT_A and AAT_B pins are unconnected, and the board uses a fixed matching network designed for the bundled ~700 nH antenna. They also do not publish a schematic for the MINI.
-
 - **28 Sep 2026:** emailed Elechouse asking whether the MINI has varicaps, for the MINI schematic, and for the antenna inductance the matching network is designed for.
 - **Early Oct 2026:** Elechouse confirmed that the MINI has no varicaps, that AAT_A/AAT_B are unconnected, that the matching network is fixed for the bundled ~700 nH antenna, and that no published schematic is available.
-
-The next step is not to try to set AAT registers and look for a change. Instead, every custom coil should be wound to behave like the stock antenna, and the chip's amplitude/phase measurement should be used as a fingerprint. We will record the stock antenna's amplitude and phase as the reference, then compare each custom coil against that baseline. RFAL may expose helpers such as `rfalChipMeasureAmplitude` and `rfalChipMeasurePhase`, but these are still unverified until checked in the vendor headers.
-
-- **Next step (1 h):** record the stock antenna's amplitude and phase as the reference.
+- **Next step (1h):** record the stock antenna's amplitude and phase as the reference.
