@@ -2,6 +2,13 @@
 
 Bring-up harness for the Elechouse **ST25R3916B MINI** reader on a Raspberry Pi. This is step 1 of the 4-square prototype plan: prove the reader, SPI link, IRQ line and driver work using only the stock hardware, so any later failure can only be caused by the custom hardware (coils, mux).
 
+## Running it again
+
+- Check you're on the right branch: `git branch --show-current` should print `feature/1-prototype-reading-a-single-nfc-tag`.
+- In `development/st25r-reader-tester`, run `uv run id_check.py`. Expect `ID=0x31 type=6`.
+- From `vendor/ST25R3916_v2.8.0_Linux_demo_v1.0/linux_demo/build`, run `sudo ./demo/nfc_demo_st25r3916b` to keep the stock antenna active. Press `Ctrl+C` to stop it; stop it before swapping antennas.
+- `vendor/` is git-ignored, so after a fresh clone you need the unpack, edit and build steps later in this document before the demo will run.
+
 ## Status (28 Sep 2026)
 
 | Goal | Result |
@@ -11,7 +18,7 @@ Bring-up harness for the Elechouse **ST25R3916B MINI** reader on a Raspberry Pi.
 | ST RFAL driver builds and runs on Trixie | ✅ |
 | Read an NTAG213 tag | ✅ |
 | Baseline read distance (stock antenna) | ✅ ~31 mm |
-| Does the MINI have AAT varicaps? | ⬜ Open (see below) |
+| Does the MINI have AAT varicaps? | ✅ No — fixed matching network, AAT_A/AAT_B unconnected |
 
 ## Hardware setup
 
@@ -112,10 +119,13 @@ This is the reference for comparing custom coils in bring-up step 4. Elechouse q
 
 Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with NTAG213 memory size. However, genuine NXP UIDs usually start with `04`, and this one starts with `53`, so it may be a compatible chip from another maker. That's fine for now, but worth remembering if tag performance seems inconsistent.
 
-## Open: does the MINI support automatic antenna tuning?
+## AAT status
 
-On the ST25R3916B, AAT only works if the board has variable capacitors (varicaps) wired to the chip's AAT_A/AAT_B outputs. Elechouse's full-size ST25R3916 schematic appears to use a fixed matching network, and the MINI's product page doesn't mention AAT.
+Elechouse confirmed in early Oct 2026 that the MINI does not have varicaps. The AAT_A and AAT_B pins are unconnected, and the board uses a fixed matching network designed for the bundled ~700 nH antenna. They also do not publish a schematic for the MINI.
 
-- **28 Sep 2026:** emailed Elechouse asking whether the MINI has varicaps, for the MINI schematic, and for the antenna inductance the matching network is designed for. Awaiting a reply.
-- **Next:** a small C test program on top of RFAL that sets the AAT registers to low, middle and high values and measures antenna amplitude/phase at each. If the readings change, varicaps are present. If they don't, the tuning is fixed.
-- Either way, record the stock antenna's amplitude/phase as the reference for step 4.
+- **28 Sep 2026:** emailed Elechouse asking whether the MINI has varicaps, for the MINI schematic, and for the antenna inductance the matching network is designed for.
+- **Early Oct 2026:** Elechouse confirmed that the MINI has no varicaps, that AAT_A/AAT_B are unconnected, that the matching network is fixed for the bundled ~700 nH antenna, and that no published schematic is available.
+
+The next step is not to try to set AAT registers and look for a change. Instead, every custom coil should be wound to behave like the stock antenna, and the chip's amplitude/phase measurement should be used as a fingerprint. We will record the stock antenna's amplitude and phase as the reference, then compare each custom coil against that baseline. RFAL may expose helpers such as `rfalChipMeasureAmplitude` and `rfalChipMeasurePhase`, but these are still unverified until checked in the vendor headers.
+
+- **Next step (1 h):** record the stock antenna's amplitude and phase as the reference.
