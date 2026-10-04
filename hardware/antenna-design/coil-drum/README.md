@@ -4,11 +4,12 @@ This folder contains a single printed 57 mm chess-square tile for a prototype re
 
 ## Key dimensions
 
-These values come from the FreeCAD spreadsheet in `coil-drum.FCStd`. Some values are still typed in instead of being linked to the spreadsheet; that tidy-up is still pending, including the unused aliases.
+Values are from the draft 2 model (some spreadsheet-driven, some typed in) or from measuring the real parts. The Source column says which.
 
 | Parameter | Value | Source | Notes |
 |---|---:|---|---|
 | Chess-square tile size | 57 mm | Spreadsheet value `square_size` | Printed square tile size |
+| Drum core diameter | 31.5 mm | Spreadsheet value `core_d` | Draft 2 geometry |
 | Base plate thickness | 3.6 mm | Typed in | Draft 2 geometry |
 | Drum overall height | 6.0 mm | Typed in | Winding gap is 2.4 mm |
 | Top flange thickness | 0.6 mm | Typed in | Draft 2 geometry |
@@ -16,8 +17,8 @@ These values come from the FreeCAD spreadsheet in `coil-drum.FCStd`. Some values
 | LED ring OD | 50 mm | Measured | Measured 2 Oct 2026 |
 | LED peg spacing | 32.5 mm | Spreadsheet value `LED_loc_peg_dist` | Locates the LED ring |
 | LED hole diameter | 2.2 mm | Spreadsheet value `LED_loc_hole_dia` | Hole size |
-| LED peg diameter | 1.2 mm | Typed in | Derived from `2.2 mm - 1.0 mm` clearance |
-| LED peg height | 5 mm | Typed in | Draft 2 geometry |
+| LED peg diameter | 1.2 mm | Spreadsheet value `LED_loc_peg_dia` (= `LED_loc_hole_dia` - `clearance`) | Spreadsheet-driven |
+| LED peg height | 5 mm | Typed in | 5 mm from the bottom (1.4 mm above the base plate) |
 | Anchor-board pocket height | 1.6 mm | Typed in | Draft 2 geometry |
 | Anchor-board pocket floor | 0.6 mm | Typed in | Draft 2 geometry |
 
@@ -53,4 +54,4 @@ These values come from the FreeCAD spreadsheet in `coil-drum.FCStd`. Some values
 ## Notes
 
 - The design currently mixes spreadsheet-driven values and a few hard-coded values; a tidy-up is still pending.
-- The board anchor pocket and the tail notch are in the model, but the exact pocket dimensions are not yet all spreadsheet-driven and are not being guessed here.
+- The board anchor pocket and the tail notch are in the model.

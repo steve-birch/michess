@@ -123,4 +123,7 @@ Note: the tag's data block (`E1 10 12 00`) confirms an NDEF-formatted tag with N
 
 - **28 Sep 2026:** emailed Elechouse asking whether the MINI has varicaps, for the MINI schematic, and for the antenna inductance the matching network is designed for.
 - **Early Oct 2026:** Elechouse confirmed that the MINI has no varicaps, that AAT_A/AAT_B are unconnected, that the matching network is fixed for the bundled ~700 nH antenna, and that no published schematic is available.
+
+With no AAT, each custom coil is wound to behave like the stock antenna, and the chip's amplitude/phase measurement is used as a fingerprint against the stock antenna's reference values. RFAL may provide `rfalChipMeasureAmplitude` / `rfalChipMeasurePhase` (unverified until checked in the vendor headers).
+
 - **Next step (1h):** record the stock antenna's amplitude and phase as the reference.
